@@ -27,3 +27,5 @@ const merge = (left, right) => {
 
   return mergedArray.concat(left, right);
 }
+
+console.log(mergeSort([3, 9, 1, 2, 6, 13, 11, 10, 8]));
