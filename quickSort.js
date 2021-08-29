@@ -14,6 +14,6 @@ const quickSort = (arr) => {
       right.push(arr[i]);
     }
   }
-  
-  return quickSort(left).concat(pivot, quickSort(right));
+
+  return [...quickSort(left), pivot, ...quickSort(right)];
 }
