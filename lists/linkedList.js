@@ -1,5 +1,4 @@
 class LinkedList {
-  // code goes here
   constructor() {
     this.head = null;
     this.tail = null;
@@ -7,7 +6,6 @@ class LinkedList {
   }
 
   push(value) {
-    // accepts value and add to end of the list
     const node = new Node(value);
     if (!this.head) {
       this.head = node;
@@ -32,7 +30,7 @@ class LinkedList {
     while (node.next) {
       // if the next node is the current tail (which we're removing)
       if (node.next === this.tail) {
-        this.tail = node; // reassing tail to current node
+        this.tail = node; // reassign tail to current node
         return node.next = null; // remove pointer to previous tail
       }
       // next node is not the tail, traverse to the next node
@@ -61,7 +59,6 @@ class LinkedList {
   }
 
   delete(index) {
-    // returns removed value
     if (this.length < 1) {
       return void 0;
     }
@@ -95,7 +92,6 @@ class LinkedList {
 }
 
 class Node {
-  // code goes here
   constructor(value) {
     this.value = value;
     this.next = null;
