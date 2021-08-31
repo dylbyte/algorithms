@@ -1,18 +1,16 @@
 class ArrayList {
   constructor() {
-    this.size = 0;
+    this.length = 0;
     this.data = {};
   }
 
   push(value) {
-    this.data[this.size] = value;
-    this.size++;
+    this.data[this.length] = value;
+    this.length++;
   }
 
   pop() {
-    const last = this.data[this.size - 1];
-    this.delete(this.size - 1);
-    return last;
+    return this.delete(this.length - 1);
   }
 
   get(index) {
@@ -23,23 +21,28 @@ class ArrayList {
     const target = this.data[index];
     delete this.data[index];
 
-    // collapse remaining
-    for (let i = index; i < this.size - 1; i++) {
-      const insert = this.data[i + 1];
-      this.data[i] = insert;
-    }
-    // trim end
-    delete this.data[this.size - 1];
-    this.size--;
+    // collapse remaining items
+    this._collapseTo(index);
     return target;
   }
 
-  length() {
-    return this.size;
+  getLength() {
+    return this.length;
   }
 
   read() {
     return this.data;
+  }
+
+  _collapseTo(index) {
+    for (let i = index; i < this.length - 1; i++) {
+      const insert = this.data[i + 1];
+      this.data[i] = insert;
+    }
+
+     // trim end
+     delete this.data[this.length - 1];
+     this.length--;
   }
 
 }
