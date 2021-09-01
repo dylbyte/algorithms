@@ -1,99 +1,72 @@
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
+}
+
 class LinkedList {
   constructor() {
     this.head = null;
     this.tail = null;
     this.length = 0;
   }
-
+  
   push(value) {
     const node = new Node(value);
+    this.length++;
     if (!this.head) {
       this.head = node;
-    } else if (!this.tail) {
-      this.head.next = node;
-      this.tail = node;
     } else {
       this.tail.next = node;
     }
-    this.length++;
+    this.tail = node;
   }
 
   pop() {
-    // handle empty list
-    if (this.length < 1) {
-      return void 0;
-    }
+    return this.delete(this.length - 1);
+  }
+  
+  _find(index) {
+    // handle out of bounds
+    if (index >= this.length) return null;
 
-    // starting at head, traverse the list to last node
-    let node = this.head;
-    const response = this.tail.value; // capture value to remove
-    while (node.next) {
-      // if the next node is the current tail (which we're removing)
-      if (node.next === this.tail) {
-        this.tail = node; // reassign tail to current node
-        return node.next = null; // remove pointer to previous tail
-      }
-      // next node is not the tail, traverse to the next node
-      node = node.next;
+    let current = this.head;
+    for (let i = 0; i < index; i++) {
+      current = current.next;
     }
-    this.length--;
-    return response;
+    return current;
   }
 
   get(index) {
-    // handle empty list
-    if (this.length < 1) {
-      return void 0;
-    }
-
-    let i = 0;
-    let node = this.head;
-    while (node) {
-      if (i === index) {
-        return node;
-      }
-      node = node.next;
-      i++;
-    }
-    return void 0;
+    const node = this._find(index);
+    if (!node) return void 0;
+    return node.value;
   }
-
+  
   delete(index) {
-    if (this.length < 1) {
-      return void 0;
-    }
-
-    let response;
-    // handle delete head
+    // handle head node
     if (index === 0) {
-      response = this.head.value;
-      this.head = this.head.next;
-      this.length--;
-      return response;
-    }
-
-    let i = 1;
-    let previous = this.head;
-    let current = previous.next;
-    while (current) {
-      // traverse to index
-      if (i === index) {
-        response = current.value; // capture value of node being deleted
-        previous.next = current.next; // remove pointer to deleted node
-        this.length--;
-        return response;
+      // capture node to be excised
+      const head = this.head;
+      if (head) {
+        this.head = head.next;
+      } else {
+        this.head = null;
+        this.tail = null;
       }
-      previous = current;
-      current = current.next;
-      i++;
+      this.length--;
+      return head.value;
     }
-    return void 0;
-  }
-}
+    
+    const node = this._find(index - 1);
+    const excise = node.next;
+    if (!excise) return null;
+    node.next = excise.next; // if excise node was the end/tail of the list
+    if (!node.next) this.tail = node.next;
 
-class Node {
-  constructor(value) {
-    this.value = value;
-    this.next = null;
+    this.length--;
+    return excise.value;
   }
+
 }
