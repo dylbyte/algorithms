@@ -26,8 +26,11 @@ class AVLTree {
         }
       }
     }
-    // balance
+    // re-balance
     return this;
+  }
+  rotate() {
+    // handle rebalancing
   }
 }
 
