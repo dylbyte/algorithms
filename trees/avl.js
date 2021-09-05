@@ -7,37 +7,49 @@ class AVLTree {
     if (!this.root) {
       this.root = new Node(value);
     } else {
-      let current = this.root;
-      while (true) {
-        if (current.value > value) {
-          if (current.left) {
-            current = current.left;
-          } else {
-            current.left = new Node(value);
-            break;
-          }
-        } else {
-          if (current.right) {
-            current = current.right;
-          } else {
-            current.right = new Node(value);
-            break;
-          }
-        }
-      }
+      this.root.add(value);
     }
-    // re-balance
-    return this;
   }
-  rotate() {
-    // handle rebalancing
+  toObject() {
+    return this.root;
   }
 }
 
 class Node {
   constructor(value) {
-    this.value = value;
     this.left = null;
     this.right = null;
+    this.value = value;
+    this.height = 1;
+  }
+
+  add(value) {
+    let current = this.root;
+    // decide to go left or right
+
+    // find the correct place to add
+    // make sure to update height
+    this.balance();
+  }
+  balance() {
+    // ask if this node is out of balance -- check height 2 or more
+      // if not out of balance, do nothing
+      // if out of balance, need single or double?
+        // if single -- call rotate on self
+        // if double -- call rotate on child then self
+  }
+  rotateRR() {
+    // if right child is heavy
+    // rotate
+    this.right.updateInNewLocation();
+    this.updateInNewLocation();
+  }
+  rotateLL() {
+    // if left child is heavy
+    this.left.updateInNewLocation();
+    this.updateInNewLocation();
+  }
+  updateInNewLocation() {
+    // calculate new height
   }
 }
