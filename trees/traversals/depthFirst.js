@@ -24,4 +24,9 @@ const inorderTraverse = (node, array) => {
 const postorderTraverse = (node, array) => {
   // root always last
   // go left, go right, add to the array (after visiting the last child)
+  if (!node) return array;
+  array = postorderTraverse(node.left, array);
+  array = postorderTraverse(node.right, array);
+  array.push(node.value);
+  return array;
 };
