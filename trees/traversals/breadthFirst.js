@@ -5,3 +5,17 @@ const breadthFirstTraverse = (queue, array) => {
   array.push(node.value);
   return array;
 };
+
+// iterative
+const breadthFirstTraverse2 = (queue, array) => {
+  if (!queue.length) return array;
+
+  while (queue.length) {
+    const node = queue.shift();
+    array.push(node.value);
+    if (node.left) queue.push(node.left);
+    if (node.right) queue.push(node.right);
+  }
+
+  return array;
+};
