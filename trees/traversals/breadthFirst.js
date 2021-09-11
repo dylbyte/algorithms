@@ -1,3 +1,7 @@
 const breadthFirstTraverse = (queue, array) => {
-  // fill code in here
+  if (!node) return array;
+  array = postorderTraverse(node.left, array);
+  array = postorderTraverse(node.right, array);
+  array.push(node.value);
+  return array;
 };
