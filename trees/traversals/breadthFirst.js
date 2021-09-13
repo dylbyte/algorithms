@@ -22,7 +22,14 @@ const breadthFirstTraverse2 = (queue, array) => {
 
 class Queue {
   constructor() {
-    this.data = [];
-    this.length = 0;
+    this.items = [];
+  }
+
+  enqueue(item) {
+    this.items.push(item);
+  }
+
+  dequeue() {
+    return this.items.shift();
   }
 }
