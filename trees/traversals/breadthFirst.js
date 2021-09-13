@@ -19,3 +19,10 @@ const breadthFirstTraverse2 = (queue, array) => {
 
   return array;
 };
+
+class Queue {
+  constructor() {
+    this.data = [];
+    this.length = 0;
+  }
+}
