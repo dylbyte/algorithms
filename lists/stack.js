@@ -28,5 +28,4 @@ class Stack {
   size() {
     return this.items.length;
   }
-
 }

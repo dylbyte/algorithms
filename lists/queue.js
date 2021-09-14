@@ -20,7 +20,7 @@ class Queue {
   }
 
   print() {
-    return `[${this.items}]`;
+    return this.items;
   }
 
   size() {
