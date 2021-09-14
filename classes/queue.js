@@ -20,10 +20,12 @@ class Queue {
   }
 
   print() {
-    return `[${this.items}]`;
+    return this.items;
   }
 
   size() {
     return this.items.length;
   }
 }
+
+module.exports = Queue;
