@@ -1,3 +1,5 @@
+const Node = require('../../classes/Node');
+
 // useful to deep copy a tree
 const preorderTraverse = (node, array = []) => {
   if (!node) return array;
@@ -24,11 +26,3 @@ const postorderTraverse = (node, array = []) => {
   array.push(node.value);
   return array;
 };
-
-class Node {
-  constructor(value) {
-    this.value = value;
-    this.left = null;
-    this.right = null;
-  }
-}

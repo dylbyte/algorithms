@@ -1,4 +1,4 @@
-const Queue = require('../../classes/queue');
+const Queue = require('../../classes/Queue');
 
 const breadthFirstTraverse = (queue, array) => {
   if (!node) return array;
