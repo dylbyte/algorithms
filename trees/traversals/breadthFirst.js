@@ -1,3 +1,5 @@
+const Queue = require('../../classes/queue');
+
 const breadthFirstTraverse = (queue, array) => {
   if (!node) return array;
   array = postorderTraverse(node.left, array);
@@ -19,17 +21,3 @@ const breadthFirstTraverse2 = (queue, array) => {
 
   return array;
 };
-
-class Queue {
-  constructor() {
-    this.items = [];
-  }
-
-  enqueue(item) {
-    this.items.push(item);
-  }
-
-  dequeue() {
-    return this.items.shift();
-  }
-}
