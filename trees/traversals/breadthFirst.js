@@ -1,15 +1,18 @@
 const Queue = require('../../classes/Queue');
 
-const breadthFirstTraverse = (queue, array) => {
-  if (!node) return array;
-  array = postorderTraverse(node.left, array);
-  array = postorderTraverse(node.right, array);
+// useful for "nearness" analysis - applications for path finding and graphs
+const breadthFirstTraverse = (queue, array = []) => {
+  if (!queue.length) return array;
+
+  const node = queue.shift();
   array.push(node.value);
-  return array;
+  if (node.left) queue.push(node.left);
+  if (node.right) queue.push(node.right);
+  return breadthFirstTraverse(queue, array);
 };
 
 // iterative
-const breadthFirstTraverse2 = (queue, array) => {
+const breadthFirstTraverse2 = (queue, array = []) => {
   if (!queue.length) return array;
 
   while (queue.length) {
@@ -18,6 +21,5 @@ const breadthFirstTraverse2 = (queue, array) => {
     if (node.left) queue.push(node.left);
     if (node.right) queue.push(node.right);
   }
-
   return array;
 };
