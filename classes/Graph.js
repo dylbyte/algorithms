@@ -1,18 +1,31 @@
 class Graph {
   constructor() {
-    this.#vertices = [];
-    this.#adjacents = {};
+    this.vertices = [];
+    this.adjacents = {};
   }
 
-  #addVertex(v) {
-    vertices.push(v); // adds vertex to list of vertices
-    adjacents.set(v, []); // initialize the adjacent list for given vtx
+  addVertex(v) {
+    this.vertices.push(v); // adds vertex to list of vertices
+    this.adjacents[v] = []; // initialize the adjacent list for given vtx
   }
 
   // adds an edge between two vertices (v, w)
-  #addEdge(v, w) {
-    adjacents.get(v).push(w); // add w to vertex v's adjacents list
-    adjacents.get(w).push(v); // add v to the adjacents list of vertex w
+  addEdge(v, w) {
+    this.adjacents[v].push(w); // add w to vertex v's this.adjacents list
+    this.adjacents[w].push(v); // add v to the this.adjacents list of vertex w
+  }
+
+  toString() {
+    let s = '';
+    for (let i = 0; i < this.vertices.length; i++) {
+      s += this.vertices[i] + ' -> ';
+      const neighbors = this.adjacents[this.vertices[i]];
+      for (let j = 0; j < neighbors.length; j++) {
+        s += neighbors[j] + ' ';
+      }
+      s += '\n';
+    }
+    return s;
   }
 }
 
