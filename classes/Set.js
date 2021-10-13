@@ -11,7 +11,7 @@ class Set {
     return false;
   }
 
-  delete(value) {
+  remove(value) {
     if (this.has(value)) {
       delete this.items[value];
       return true;
@@ -38,7 +38,7 @@ class Set {
     }
     return values;
   }
-  
+
 }
 
 module.exports = Set;
