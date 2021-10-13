@@ -4,29 +4,41 @@ class Set {
   }
 
   add(value) {
-    // add value to items
+    if (!this.has(value)) {
+      this.items[value] = value;
+      return true;
+    }
+    return false;
   }
 
   delete(value) {
-    // remove value from items
+    if (this.has(value)) {
+      delete this.items[value];
+      return true;
+    }
+    return false;
   }
 
   has(value) {
-    // lookup value in items
+    return this.items.hasOwnProperty(value);
   }
 
   clear() {
-    // empty the set
+    this.items = {};
   }
 
   size() {
-    // return number of items
+    return Object.keys(this.items).length;
   }
 
   values() {
-    // print the items
+    let values = [];
+    for (let i = 0, keys = Object.keys(this.items); i < keys.length; i++) {
+      values.push(this.items[keys[i]]);
+    }
+    return values;
   }
-
+  
 }
 
 module.exports = Set;
