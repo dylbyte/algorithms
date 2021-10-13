@@ -41,4 +41,21 @@ class Set {
 
 }
 
+const set = new Set();
+set.add(1);
+console.log(set.values());
+console.log('Set has the value 1? ', set.has(1));
+console.log('Set has size: ', set.size());
+
+set.add(2);
+console.log(set.values());
+console.log('Set has the value 2? ', set.has(2));
+console.log('Set has size: ', set.size());
+
+set.remove(1);
+console.log(set.values());
+
+set.remove(2);
+console.log(set.values());
+
 module.exports = Set;
